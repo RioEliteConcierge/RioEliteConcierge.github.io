@@ -50,45 +50,53 @@ export default defineConfig({
     },
   ],
 
-  integrations: [sitemap(), mdx(), icon({
-    // Local SVG icons (used as <Icon name="file-name" />) live next to the other assets.
-    iconDir: 'src/assets/icons',
-    include: {
-      tabler: ['*'],
-      'flat-color-icons': [
-        'template',
-        'gallery',
-        'approval',
-        'document',
-        'advertising',
-        'currency-exchange',
-        'voice-presentation',
-        'business-contact',
-        'database',
-      ],
-    },
-  }), ...whenExternalScripts(() =>
-    partytown({
-      config: { forward: ['dataLayer.push'] },
-    })
-  ), compress({
-    // csso off on purpose: its parser doesn't understand the media range
-    // syntax Tailwind v4 emits for breakpoints (`@media (width>=48rem)`) and
-    // silently drops every one of those blocks — the site then renders as if
-    // all `md:`/`lg:` classes were missing. lightningcss parses it correctly.
-    CSS: { csso: false, lightningcss: { minify: true } },
-    HTML: {
-      'html-minifier-terser': {
-        removeAttributeQuotes: false,
+  integrations: [
+    sitemap(),
+    mdx(),
+    icon({
+      // Local SVG icons (used as <Icon name="file-name" />) live next to the other assets.
+      iconDir: 'src/assets/icons',
+      include: {
+        tabler: ['*'],
+        'flat-color-icons': [
+          'template',
+          'gallery',
+          'approval',
+          'document',
+          'advertising',
+          'currency-exchange',
+          'voice-presentation',
+          'business-contact',
+          'database',
+        ],
       },
-    },
-    Image: false,
-    JavaScript: true,
-    SVG: false,
-    Logger: 1,
-  }), astrowind({
-    config: './src/config.yaml',
-  }), react()],
+    }),
+    ...whenExternalScripts(() =>
+      partytown({
+        config: { forward: ['dataLayer.push'] },
+      })
+    ),
+    compress({
+      // csso off on purpose: its parser doesn't understand the media range
+      // syntax Tailwind v4 emits for breakpoints (`@media (width>=48rem)`) and
+      // silently drops every one of those blocks — the site then renders as if
+      // all `md:`/`lg:` classes were missing. lightningcss parses it correctly.
+      CSS: { csso: false, lightningcss: { minify: true } },
+      HTML: {
+        'html-minifier-terser': {
+          removeAttributeQuotes: false,
+        },
+      },
+      Image: false,
+      JavaScript: true,
+      SVG: false,
+      Logger: 1,
+    }),
+    astrowind({
+      config: './src/config.yaml',
+    }),
+    react(),
+  ],
 
   image: {
     // Astro's default Sharp service handles local images.
