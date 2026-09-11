@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
 import { getHomePermalink, trimSlash } from '~/utils/permalinks';
+import type { CallToAction } from '~/types';
 
 interface Link {
   text?: string;
@@ -17,15 +18,19 @@ interface MenuLink extends Link {
 export interface Props {
   id?: string;
   links?: Array<MenuLink>;
+  actions?: Array<CallToAction>;
   isSticky?: boolean;
   isDark?: boolean;
   isFullWidth?: boolean;
+  showToggleTheme?: boolean;
+  showRssFeed?: boolean;
   position?: string;
 }
 
 const {
   id = 'header',
   links = [],
+  actions = [],
   isSticky = true,
   isDark = true,
   isFullWidth = false,
@@ -37,7 +42,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 const isActive = (href?: string) =>
   typeof href === 'string' && href.startsWith('/') && `/${trimSlash(href)}` === currentPath;
 
-const persistKey = `rio-header-${Array.from(JSON.stringify({ links, isSticky, isDark, isFullWidth, position }))
+const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isSticky, isDark, isFullWidth, position }))
   .reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) >>> 0, 7)
   .toString(36)}`;
 ---
@@ -122,13 +127,18 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, isSticky, is
       </nav>
 
       <div class="hidden items-center gap-3 lg:flex">
-        <a
-          class="inline-flex items-center gap-2 rounded-full bg-[#d9a62e] px-5 py-2.5 text-sm font-semibold text-[#050505] no-underline transition hover:bg-[#f0c95a] hover:-translate-y-0.5"
-          href="/#contatti"
-        >
-          Parliamone
-          <Icon name="tabler:arrow-up-right" size={17} />
-        </a>
+        {
+          actions.map(({ text, href, ...action }) => (
+            <a
+              class="inline-flex items-center gap-2 rounded-full bg-[#d9a62e] px-5 py-2.5 text-sm font-semibold text-[#050505] no-underline transition hover:-translate-y-0.5 hover:bg-[#f0c95a]"
+              href={href}
+              {...action}
+            >
+              {text}
+              <Icon name="tabler:arrow-up-right" size={17} />
+            </a>
+          ))
+        }
       </div>
 
       <div class="flex items-center lg:hidden">
