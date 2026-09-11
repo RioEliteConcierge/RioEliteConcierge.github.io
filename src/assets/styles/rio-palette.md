@@ -4,16 +4,16 @@ La palette deve riprendere il logo: fondo nero, bianco caldo per il lettering, o
 
 ## Colori principali
 
-| Nome | HEX | Utilizzo |
-|---|---|---|
-| Nero Rio | `#050505` | Hero, footer, sezioni scure, overlay |
-| Nero morbido | `#11100D` | Card scure e blocchi secondari |
-| Bianco logo | `#F5F2E8` | Testi principali su fondo scuro |
-| Avorio | `#E8E1D2` | Background chiari e sezioni editoriali |
-| Oro palma | `#D9A62E` | CTA, icone, dettagli e hover |
-| Oro chiaro | `#F0C95A` | Highlight e testo enfatizzato |
-| Bronzo | `#9B6A21` | Bordi, stati secondari e decorazioni |
-| Marrone caldo | `#3A2410` | Gradienti e profondità |
+| Nome          | HEX       | Utilizzo                               |
+| ------------- | --------- | -------------------------------------- |
+| Nero Rio      | `#050505` | Hero, footer, sezioni scure, overlay   |
+| Nero morbido  | `#11100D` | Card scure e blocchi secondari         |
+| Bianco logo   | `#F5F2E8` | Testi principali su fondo scuro        |
+| Avorio        | `#E8E1D2` | Background chiari e sezioni editoriali |
+| Oro palma     | `#D9A62E` | CTA, icone, dettagli e hover           |
+| Oro chiaro    | `#F0C95A` | Highlight e testo enfatizzato          |
+| Bronzo        | `#9B6A21` | Bordi, stati secondari e decorazioni   |
+| Marrone caldo | `#3A2410` | Gradienti e profondità                 |
 
 ## Variabili CSS
 
