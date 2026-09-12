@@ -1,5 +1,5 @@
 site:
-  name: AstroWind
+  name: Rio Elite Concierge
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false
@@ -9,26 +9,22 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Rio Elite Concierge
+    template: '%s | Rio Elite Concierge'
+  description: "\U0001F680 Rio concierge is a premium service that provides personalized travel experiences in Rio de Janeiro, Brazil. Our team of experts will help you plan your trip, book your accommodations, and create unforgettable memories."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Rio Elite Concierge
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
-  twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
-    cardType: summary_large_image
 
 i18n:
-  language: en
+  language: it
   textDirection: ltr
 
 apps:

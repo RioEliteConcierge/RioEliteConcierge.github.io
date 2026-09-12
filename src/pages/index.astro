@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import { Icon } from 'astro-icon/components';
 
 const metadata = {
-  title: 'Rio Elite Concierge Home',
+  title: 'Home',
   description:
     'Esperienze autentiche, accesso privilegiato e supporto personale per vivere Rio de Janeiro in modo indimenticabile.',
 };
@@ -82,42 +82,6 @@ const faqs = [
 
       <div class="absolute inset-0 bg-linear-to-r from-[#050505]/85 via-[#050505]/45 to-[#050505]/15"></div>
       <div class="absolute inset-0 bg-linear-to-t from-[#050505]/75 via-transparent to-[#050505]/20"></div>
-
-      <nav
-        class="relative z-10 mx-auto flex w-[min(1180px,calc(100%-2rem))] items-center justify-between pt-7 sm:w-[min(1180px,calc(100%-3rem))]"
-        aria-label="Navigazione principale"
-      >
-        <a
-          class="flex flex-col leading-none text-[#f5f2e8] no-underline"
-          href="/"
-          aria-label="Rio Elite Concierge home"
-        >
-          <span class="text-[1.35rem] font-extrabold tracking-[.19em]">RIO</span>
-          <span class="mt-1.5 text-[.47rem] tracking-[.24em] opacity-80">ELITE CONCIERGE</span>
-        </a>
-
-        <div class="flex items-center gap-5 text-xs sm:gap-8 sm:text-sm">
-          <a class="hidden text-[#f5f2e8]/90 no-underline transition hover:text-[#f0c95a] sm:inline" href="#esperienza">
-            L’esperienza
-          </a>
-          <a class="hidden text-[#f5f2e8]/90 no-underline transition hover:text-[#f0c95a] sm:inline" href="#servizi">
-            Servizi
-          </a>
-          <a
-            class="hidden text-[#f5f2e8]/90 no-underline transition hover:text-[#f0c95a] sm:inline"
-            href="#come-funziona"
-          >
-            Come funziona
-          </a>
-          <a
-            class="inline-flex items-center gap-1.5 rounded-full border border-[#f5f2e8]/50 px-3.5 py-2.5 text-[#f5f2e8] no-underline transition hover:border-[#f0c95a] hover:text-[#f0c95a]"
-            href="#contatti"
-          >
-            Parliamone
-            <Icon name="tabler:arrow-up-right" size={16} />
-          </a>
-        </div>
-      </nav>
 
       <div
         class="relative z-10 mx-auto my-auto w-[min(1180px,calc(100%-2rem))] pb-16 pt-24 sm:w-[min(1180px,calc(100%-3rem))]"
