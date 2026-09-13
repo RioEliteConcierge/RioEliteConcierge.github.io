@@ -76,7 +76,8 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
         <span class="text-xl font-extrabold tracking-[.19em] text-[#f5f2e8] transition group-hover:text-[#f0c95a]">
           RIO
         </span>
-        <span class="mt-1 text-[.42rem] tracking-[.24em] text-[#d9a62e]">ELITE CONCIERGE</span>
+
+        <span class="mt-1 text-[.42rem] tracking-[.24em] text-[#d9a62e]"> ELITE CONCIERGE </span>
       </a>
 
       <nav class="hidden items-center lg:flex" aria-label="Navigazione principale">
@@ -88,11 +89,12 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
                   <>
                     <button
                       type="button"
-                      class="flex items-center gap-1 rounded-full px-4 py-2.5 text-[#f5f2e8]/90 transition hover:text-[#f0c95a]"
+                      class="nav-link flex items-center gap-1 px-4 py-2.5 text-[#f5f2e8]/90 transition-colors duration-300 hover:text-[#f0c95a]"
                     >
                       {text}
                       <Icon name="tabler:chevron-down" class="h-3.5 w-3.5" />
                     </button>
+
                     <ul class="dropdown-menu absolute left-0 top-full hidden min-w-52 rounded-xl border border-[#d9a62e]/20 bg-[#11100d]/95 py-2 shadow-2xl backdrop-blur-md">
                       {children.map(({ text: childText, href: childHref }) => (
                         <li>
@@ -112,7 +114,7 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
                 ) : (
                   <a
                     class:list={[
-                      'relative block rounded-full px-4 py-2.5 text-[#f5f2e8]/90 transition hover:text-[#f0c95a]',
+                      'nav-link relative block px-4 py-2.5 text-[#f5f2e8]/90 no-underline transition-colors duration-300 hover:text-[#f0c95a]',
                       { 'aw-link-active': isActive(href) },
                     ]}
                     href={href}
@@ -158,8 +160,47 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.28);
   }
 
-  aw-header .aw-link-active {
+  aw-header .nav-link {
+    position: relative;
+  }
+
+  aw-header .nav-link::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    bottom: 0.42rem;
+    left: 1rem;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #d9a62e, #f0c95a);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 320ms ease;
+  }
+  aw-header .nav-link:hover::after,
+  aw-header .nav-link:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  aw-header .nav-link.aw-link-active {
+    color: rgba(245, 242, 232, 0.9) !important;
+  }
+
+  aw-header .nav-link.aw-link-active::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  aw-header .nav-link:focus-visible {
+    outline: 2px solid #f0c95a;
+    outline-offset: 4px;
+    border-radius: 0.25rem;
+  }
+
+  aw-header .dropdown-menu .aw-link-active {
     color: #f0c95a;
+    background: rgba(217, 166, 46, 0.1);
   }
 
   aw-header .dropdown:hover > .dropdown-menu,
@@ -181,14 +222,29 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
     aw-header header.expanded nav ul {
       width: 100%;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 0.5rem;
       font-size: 1.35rem;
+      text-align: center;
     }
 
     aw-header header.expanded nav a,
     aw-header header.expanded nav button {
       padding: 0.85rem 0;
+      text-align: center;
+      justify-content: center;
+    }
+
+    aw-header header.expanded .nav-link::after {
+      right: 0;
+      bottom: 0.35rem;
+      left: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    aw-header .nav-link::after {
+      transition: none;
     }
   }
 </style>
@@ -198,6 +254,7 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
     private onScroll?: () => void;
     private mql?: MediaQueryList;
     private onMqlChange?: () => void;
+
     private onPageLoad = () => {
       this.updateActiveLinks();
       this.closeOpenDropdown();
@@ -221,6 +278,7 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
 
       toggle?.addEventListener('click', () => {
         const expanded = toggle.classList.toggle('expanded');
+
         toggle.setAttribute('aria-expanded', String(expanded));
         document.body.classList.toggle('overflow-hidden');
         header?.classList.toggle('h-screen');
@@ -236,6 +294,7 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
 
       if (header?.hasAttribute('data-aw-sticky-header')) {
         let ticking = false;
+
         const applyStyles = () => {
           header.classList.toggle('scroll', window.scrollY > 60);
           ticking = false;
@@ -256,14 +315,23 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
     }
 
     disconnectedCallback() {
-      if (this.onScroll) document.removeEventListener('scroll', this.onScroll);
-      if (this.mql && this.onMqlChange) this.mql.removeEventListener('change', this.onMqlChange);
+      if (this.onScroll) {
+        document.removeEventListener('scroll', this.onScroll);
+      }
+
+      if (this.mql && this.onMqlChange) {
+        this.mql.removeEventListener('change', this.onMqlChange);
+      }
+
       document.removeEventListener('astro:page-load', this.onPageLoad);
     }
 
     private closeOpenDropdown() {
       const active = document.activeElement as HTMLElement | null;
-      if (active && this.contains(active) && active.closest('.dropdown')) active.blur();
+
+      if (active && this.contains(active) && active.closest('.dropdown')) {
+        active.blur();
+      }
     }
 
     private updateActiveLinks() {
@@ -272,6 +340,7 @@ const persistKey = `rio-header-${Array.from(JSON.stringify({ links, actions, isS
 
       this.querySelectorAll<HTMLAnchorElement>('nav a[href]').forEach((anchor) => {
         const url = new URL(anchor.href, window.location.href);
+
         const isPathLink =
           url.origin === window.location.origin && !url.hash && !anchor.getAttribute('href')?.startsWith('#');
 
