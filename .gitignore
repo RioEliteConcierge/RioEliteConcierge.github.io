@@ -30,6 +30,7 @@ Thumbs.db
 
 # Editor settings
 .vscode/
+.idea/
 
 # Local tooling and sandbox files
 .agents/
