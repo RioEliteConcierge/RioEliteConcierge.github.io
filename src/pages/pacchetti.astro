@@ -1,0 +1,103 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+const metadata = {
+  title: 'Pacchetti',
+  description: 'Scopri i nostri pacchetti e contattaci su WhatsApp per ricevere maggiori informazioni.',
+};
+
+const whatsappNumber = '393465886627';
+
+const whatsappLink = (plan: string) =>
+  `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    `Ciao, vorrei ricevere maggiori informazioni sul pacchetto ${plan}.`
+  )}`;
+
+const prices = [
+  {
+    title: 'Base',
+    price: '',
+    period: 'su richiesta',
+    note: 'Prezzo su richiesta',
+    items: [
+      { description: 'Soluzione essenziale' },
+      { description: 'Supporto per le necessità principali' },
+      { description: 'Preventivo personalizzato' },
+    ],
+    callToAction: {
+      text: 'Richiedi informazioni',
+      href: whatsappLink('Base'),
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+  },
+  {
+    title: 'Plus',
+    price: '',
+    period: 'su richiesta',
+    note: 'Prezzo su richiesta',
+    items: [
+      { description: 'Tutto ciò che include Base' },
+      { description: 'Funzionalità aggiuntive' },
+      { description: 'Supporto prioritario' },
+    ],
+    callToAction: {
+      text: 'Richiedi informazioni',
+      href: whatsappLink('Plus'),
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    highlight: true,
+    hasRibbon: true,
+    ribbonTitle: 'Più richiesto',
+  },
+  {
+    title: 'Premium',
+    price: '',
+    period: 'su richiesta',
+    note: 'Prezzo su richiesta',
+    items: [
+      { description: 'Tutto ciò che include Plus' },
+      { description: 'Soluzione completa' },
+      { description: 'Assistenza dedicata' },
+    ],
+    callToAction: {
+      text: 'Richiedi informazioni',
+      href: whatsappLink('Premium'),
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+  },
+  {
+    title: 'Personalizzato',
+    price: '',
+    period: 'su misura',
+    note: 'Preventivo personalizzato',
+    items: [
+      { description: 'Analisi delle tue esigenze' },
+      { description: 'Configurazione personalizzata' },
+      { description: 'Preventivo dedicato' },
+      { description: 'SUPER SBORRA!!!' },
+    ],
+    callToAction: {
+      text: 'Parliamone su WhatsApp',
+      href: whatsappLink('Personalizzato'),
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+  },
+];
+---
+
+<PageLayout metadata={metadata}>
+  <Pricing
+    id="pacchetti"
+    tagline="Scegli la soluzione più adatta a te"
+    title="I nostri pacchetti"
+    subtitle="Confronta le opzioni disponibili e scrivici su WhatsApp per ricevere un preventivo o maggiori dettagli."
+    prices={prices}
+    currency=""
+    classes={{ container: 'max-w-7xl' }}
+  />
+</PageLayout>
