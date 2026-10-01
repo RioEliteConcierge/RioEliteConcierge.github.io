@@ -46,7 +46,7 @@ export const footerData = {
     },
   ],
 
-  // riga in basso (copyright, P.IVA, ecc.)
+  // riga in basso
   footNote: `
     © ${new Date().getFullYear()} Rio Elite Concierge · Tutti i diritti riservati.<br>
     Made with ❤️ by Davi.Trap
