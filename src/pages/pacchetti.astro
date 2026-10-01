@@ -1,6 +1,6 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
-import Pricing from '~/components/widgets/Pricing.astro';
+import { Icon } from 'astro-icon/components';
 
 const metadata = {
   title: 'Pacchetti',
@@ -14,90 +14,148 @@ const whatsappLink = (plan: string) =>
     `Ciao, vorrei ricevere maggiori informazioni sul pacchetto ${plan}.`
   )}`;
 
-const prices = [
+const packages = [
   {
     title: 'Base',
-    price: '',
-    period: 'su richiesta',
-    note: 'Prezzo su richiesta',
-    items: [
-      { description: 'Soluzione essenziale' },
-      { description: 'Supporto per le necessità principali' },
-      { description: 'Preventivo personalizzato' },
-    ],
-    callToAction: {
-      text: 'Richiedi informazioni',
-      href: whatsappLink('Base'),
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
+    period: 'Prezzo su richiesta',
+    items: ['Soluzione essenziale', 'Supporto per le necessità principali', 'Preventivo personalizzato'],
+    cta: 'Richiedi informazioni',
   },
   {
     title: 'Plus',
-    price: '',
-    period: 'su richiesta',
-    note: 'Prezzo su richiesta',
-    items: [
-      { description: 'Tutto ciò che include Base' },
-      { description: 'Funzionalità aggiuntive' },
-      { description: 'Supporto prioritario' },
-    ],
-    callToAction: {
-      text: 'Richiedi informazioni',
-      href: whatsappLink('Plus'),
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
+    period: 'Prezzo su richiesta',
+    items: ['Tutto ciò che include Base', 'Funzionalità aggiuntive', 'Supporto prioritario'],
+    cta: 'Richiedi informazioni',
     highlight: true,
-    hasRibbon: true,
-    ribbonTitle: 'Più richiesto',
+    badge: 'Più richiesto',
   },
   {
     title: 'Premium',
-    price: '',
-    period: 'su richiesta',
-    note: 'Prezzo su richiesta',
-    items: [
-      { description: 'Tutto ciò che include Plus' },
-      { description: 'Soluzione completa' },
-      { description: 'Assistenza dedicata' },
-    ],
-    callToAction: {
-      text: 'Richiedi informazioni',
-      href: whatsappLink('Premium'),
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
+    period: 'Prezzo su richiesta',
+    items: ['Tutto ciò che include Plus', 'Soluzione completa', 'Assistenza dedicata'],
+    cta: 'Richiedi informazioni',
   },
   {
     title: 'Personalizzato',
-    price: '',
-    period: 'su misura',
-    note: 'Preventivo personalizzato',
-    items: [
-      { description: 'Analisi delle tue esigenze' },
-      { description: 'Configurazione personalizzata' },
-      { description: 'Preventivo dedicato' },
-      { description: '-' },
-    ],
-    callToAction: {
-      text: 'Parliamone insieme',
-      href: whatsappLink('Personalizzato'),
-      target: '_blank',
-      rel: 'noopener noreferrer',
-    },
+    period: 'Preventivo personalizzato',
+    items: ['Analisi delle tue esigenze', 'Configurazione personalizzata', 'Preventivo dedicato'],
+    cta: 'Parliamone insieme',
   },
 ];
 ---
 
 <PageLayout metadata={metadata}>
-  <Pricing
-    id="pacchetti"
-    tagline="Scegli la soluzione più adatta a te"
-    title="I nostri pacchetti"
-    subtitle="Confronta le opzioni disponibili e scrivici su WhatsApp per ricevere un preventivo o maggiori dettagli."
-    prices={prices}
-    currency=""
-    classes={{ container: 'max-w-7xl' }}
-  />
+  <main class="bg-[#e8e1d2] text-[#050505]">
+    <!-- Intro -->
+    <section class="bg-[#050505] px-4 pb-20 pt-32 text-[#f5f2e8] sm:px-6 sm:pb-28" aria-labelledby="pacchetti-title">
+      <div class="mx-auto w-full max-w-295">
+        <p class="mb-5 text-[.68rem] font-bold uppercase tracking-[.2em] text-[#f0c95a]">
+          SCEGLI LA SOLUZIONE PIÙ ADATTA A TE
+        </p>
+        <h1
+          id="pacchetti-title"
+          class="max-w-4xl font-serif text-[clamp(3.2rem,10vw,7.5rem)] font-normal leading-[.9] tracking-[-.055em]"
+        >
+          I nostri<br /><em class="text-[#d9a62e]">pacchetti.</em>
+        </h1>
+        <p class="mt-7 max-w-md text-base leading-relaxed text-[#f5f2e8]/85 sm:text-xl">
+          Confronta le opzioni disponibili e scrivici su WhatsApp per ricevere un preventivo o maggiori dettagli.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pacchetti -->
+    <section id="pacchetti" class="bg-[#e8e1d2] px-4 py-20 sm:px-6 sm:py-32">
+      <div class="mx-auto grid w-full max-w-295 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          packages.map((pkg, index) => (
+            <article
+              class:list={[
+                'relative flex flex-col border p-7 transition hover:-translate-y-1',
+                pkg.highlight
+                  ? 'border-[#050505] bg-[#050505] text-[#f5f2e8]'
+                  : 'border-[#050505]/30 bg-[#ded2bd] text-[#050505]',
+              ]}
+            >
+              {pkg.badge && (
+                <span class="absolute -top-3 left-7 bg-[#d9a62e] px-3 py-1 text-[.6rem] font-bold uppercase tracking-[.15em] text-[#050505]">
+                  {pkg.badge}
+                </span>
+              )}
+              <span
+                class:list={[
+                  'mb-8 block text-[.68rem] tracking-[.15em]',
+                  pkg.highlight ? 'text-[#f0c95a]' : 'text-[#9b6a21]',
+                ]}
+              >
+                0{index + 1}
+              </span>
+              <h2 class="font-serif text-3xl font-normal">{pkg.title}</h2>
+              <p
+                class:list={[
+                  'mt-2 text-[.68rem] font-bold uppercase tracking-[.15em]',
+                  pkg.highlight ? 'text-[#f0c95a]' : 'text-[#9b6a21]',
+                ]}
+              >
+                {pkg.period}
+              </p>
+
+              <ul
+                class:list={[
+                  'mt-8 flex-1 space-y-3 border-t pt-6 text-sm leading-6',
+                  pkg.highlight ? 'border-[#f5f2e8]/25 text-[#f5f2e8]/80' : 'border-[#050505]/30 text-[#3a403a]',
+                ]}
+              >
+                {pkg.items.map((item) => (
+                  <li class="flex gap-3">
+                    <Icon name="tabler:check" size={18} class="mt-0.5 shrink-0 text-[#d9a62e]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                class:list={[
+                  'mt-8 inline-flex items-center justify-center gap-2.5 rounded-full px-5 py-3.5 text-sm font-bold no-underline transition hover:-translate-y-0.5',
+                  pkg.highlight
+                    ? 'bg-[#d9a62e] text-[#050505] hover:bg-[#f0c95a]'
+                    : 'bg-[#050505] text-[#f5f2e8] hover:bg-[#d9a62e] hover:text-[#050505]',
+                ]}
+                href={whatsappLink(pkg.title)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {pkg.cta}
+                <Icon name="tabler:arrow-up-right" size={19} />
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Contatti -->
+    <section
+      class="grid min-h-100 place-items-center bg-[#050505] px-4 py-24 text-center text-[#f5f2e8] sm:px-6"
+      aria-label="Contatti"
+    >
+      <div class="flex max-w-2xl flex-col items-center">
+        <p class="mb-5 text-[.68rem] font-bold uppercase tracking-[.2em] text-[#f0c95a]">
+          NON TROVI QUELLO CHE CERCHI?
+        </p>
+        <h2 class="font-serif text-[clamp(3rem,7vw,5.8rem)] font-normal leading-[.92] tracking-tighter">
+          Costruiamo insieme<br /><em class="text-[#d9a62e]">la tua soluzione.</em>
+        </h2>
+        <a
+          class="mt-8 inline-flex items-center gap-2.5 rounded-full bg-[#d9a62e] px-5 py-3.5 text-sm font-bold text-[#050505] no-underline transition hover:-translate-y-0.5 hover:bg-[#f0c95a]"
+          href={whatsappLink('Personalizzato')}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Parliamo del tuo viaggio
+          <Icon name="tabler:arrow-up-right" size={19} />
+        </a>
+      </div>
+    </section>
+  </main>
 </PageLayout>
