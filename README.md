@@ -12,11 +12,11 @@ Presentare il servizio in modo chiaro ed elegante, trasmettere fiducia al client
 
 ## Pagine
 
-| Pagina | Percorso | Contenuto |
-| --- | --- | --- |
-| Home | `/` | Hero, filosofia del servizio, servizi, come funziona, esperienze, FAQ, contatto |
-| Chi siamo | `/about` | Valori, presentazione di Marco Valetto, agenzia partner, contatti |
-| Pacchetti | `/pacchetti` | Base, Plus, Premium e Personalizzato, con richiesta informazioni via WhatsApp |
+| Pagina    | Percorso     | Contenuto                                                                       |
+| --------- | ------------ | ------------------------------------------------------------------------------- |
+| Home      | `/`          | Hero, filosofia del servizio, servizi, come funziona, esperienze, FAQ, contatto |
+| Chi siamo | `/about`     | Valori, presentazione di Marco Valetto, agenzia partner, contatti               |
+| Pacchetti | `/pacchetti` | Base, Plus, Premium e Personalizzato, con richiesta informazioni via WhatsApp   |
 
 ## Stack tecnologico
 
@@ -28,16 +28,16 @@ Presentare il servizio in modo chiaro ed elegante, trasmettere fiducia al client
 
 ## Identità visiva
 
-| Elemento | Valore |
-| --- | --- |
-| Sfondo chiaro | `#e8e1d2` |
-| Sfondo sabbia | `#ded2bd` |
-| Nero | `#050505` |
-| Oro | `#d9a62e` (hover `#f0c95a`) |
-| Marrone accento | `#9b6a21` |
-| Testo secondario | `#3a403a` |
-| Titoli | Font serif, con parola chiave in corsivo oro |
-| Etichette | Maiuscolo, tracking ampio, piccole |
+| Elemento         | Valore                                       |
+| ---------------- | -------------------------------------------- |
+| Sfondo chiaro    | `#e8e1d2`                                    |
+| Sfondo sabbia    | `#ded2bd`                                    |
+| Nero             | `#050505`                                    |
+| Oro              | `#d9a62e` (hover `#f0c95a`)                  |
+| Marrone accento  | `#9b6a21`                                    |
+| Testo secondario | `#3a403a`                                    |
+| Titoli           | Font serif, con parola chiave in corsivo oro |
+| Etichette        | Maiuscolo, tracking ampio, piccole           |
 
 Le sezioni alternano sfondi chiari e neri per dare ritmo alla pagina.
 
