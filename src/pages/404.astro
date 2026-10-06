@@ -1,24 +1,56 @@
 ---
-import Layout from '~/layouts/Layout.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
 import { getHomePermalink } from '~/utils/permalinks';
 
-const title = `Error 404`;
+const metadata = {
+  title: 'Pagina non trovata',
+  description: 'La pagina che cerchi non esiste o è stata spostata.',
+  robots: { index: false, follow: false },
+};
 ---
 
-<Layout metadata={{ title }}>
-  <section class="flex items-center h-full p-16">
-    <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-      <div class="max-w-md text-center">
-        <h2 class="mb-8 font-bold text-9xl">
-          <span class="sr-only">Error</span>
-          <span class="text-primary">404</span>
+<PageLayout metadata={metadata}>
+  <main class="bg-[#050505] text-[#f5f2e8]">
+    <section
+      class="relative grid min-h-svh place-items-center overflow-hidden px-4 py-32 text-center sm:px-6"
+      aria-labelledby="error-title"
+    >
+      <div class="absolute inset-0 bg-linear-to-t from-[#d9a62e]/10 via-transparent to-transparent"></div>
+
+      <div class="relative z-10 flex max-w-2xl flex-col items-center">
+        <p class="mb-5 text-[.68rem] font-bold uppercase tracking-[.2em] text-[#f0c95a]">ERRORE 404</p>
+
+        <h1
+          id="error-title"
+          class="font-serif text-[clamp(7rem,24vw,16rem)] font-normal leading-[.8] tracking-[-.055em] text-[#d9a62e]"
+        >
+          <span class="sr-only">Errore</span>
+          <em>404</em>
+        </h1>
+
+        <h2 class="mt-8 font-serif text-[clamp(2rem,5vw,3.5rem)] font-normal leading-[.95] tracking-tighter">
+          Questa strada non porta<br /><em class="text-[#d9a62e]">da nessuna parte.</em>
         </h2>
-        <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
-        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          But don't worry, you can find plenty of other things on our homepage.
+
+        <p class="my-7 max-w-md leading-7 text-[#f5f2e8]/80">
+          La pagina che cerchi non esiste o è stata spostata. Torna alla home e ricomincia da lì: Rio ti aspetta.
         </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+
+        <div class="flex flex-col items-center gap-5 sm:flex-row sm:gap-7">
+          <a
+            class="inline-flex items-center gap-2.5 rounded-full bg-[#d9a62e] px-5 py-3.5 text-sm font-bold text-[#050505] no-underline transition hover:-translate-y-0.5 hover:bg-[#f0c95a]"
+            href={getHomePermalink()}
+          >
+            Torna alla home
+            <Icon name="tabler:arrow-up-right" size={19} />
+          </a>
+          <a class="inline-flex items-center gap-2.5 text-sm text-[#f5f2e8] no-underline" href="/pacchetti">
+            <span class="h-px w-9 bg-[#f5f2e8]/70"></span>
+            Scopri i pacchetti
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
-</Layout>
+    </section>
+  </main>
+</PageLayout>
