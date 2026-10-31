@@ -4,7 +4,8 @@ import { Icon } from 'astro-icon/components';
 
 const metadata = {
   title: 'Pacchetti',
-  description: 'Scopri i nostri pacchetti e contattaci su WhatsApp per ricevere maggiori informazioni.',
+  description:
+    'Scopri i nostri pacchetti per vivere Rio de Janeiro e contattaci su WhatsApp per ricevere maggiori informazioni.',
 };
 
 const whatsappNumber = '393465886627';
@@ -16,24 +17,57 @@ const whatsappLink = (plan: string) =>
 
 const packages = [
   {
-    title: 'Base',
-    period: 'Prezzo su richiesta',
-    items: ['Soluzione essenziale', 'Supporto per le necessità principali', 'Preventivo personalizzato'],
-    cta: 'Richiedi informazioni',
+    title: 'Essential',
+    period: '500€',
+    description:
+      'Perfetto per chi vuole scoprire i principali simboli e panorami di Rio in maniera completa e autentica.',
+    items: [
+      'Guida',
+      'Cristo Redentore',
+      'Pan di Zucchero',
+      'Scalinata Selarón',
+      'Mirante D. Marta',
+      'Quartiere degli artisti di Santa Teresa',
+      'Cattedrale di San Sebastiano',
+      'Acquedotto di Lapa',
+      'Havaianas Original Store Ipanema',
+      'Giardino Botanico',
+      'Foresta di Tijuca',
+      'Vista Chinesa',
+    ],
+    cta: 'Prenota ora',
   },
   {
-    title: 'Plus',
-    period: 'Prezzo su richiesta',
-    items: ['Tutto ciò che include Base', 'Funzionalità aggiuntive', 'Supporto prioritario'],
-    cta: 'Richiedi informazioni',
-    highlight: true,
+    title: 'Autentic',
+    period: '900€',
+    description: 'Per chi desidera vivere Rio come un local, tra comunità, cultura e shopping autentico.',
+    items: [
+      'Tutto ciò che include Essenziale',
+      'Partita allo Stadio Maracanã',
+      'Favela Rocinha',
+      'Favela Vidigal (tour guidato di 3h in moto e a piedi)',
+      'Mercato Popular Uruguaiana (shopping autentico)',
+      'Biblioteca Gabinetto Reale',
+      'Morro dos Irmãos: ritrovo alle 3, scalata per vedere Rio all’alba (esperienza unica)',
+      'Moto d’acqua a Barra da Tijuca',
+    ],
+    cta: 'Prenota ora',
+  },
+  {
+    title: 'EXPLOSÃO',
+    period: '1.350€',
+    description:
+      'L’esperienza totale VIP: lusso, panorami mozzafiato e accesso esclusivo alle meraviglie naturali di Rio, con concierge personale e tour su misura.',
+    items: [
+      'Tutto ciò che include Essenziale e Autentico',
+      'Giro in elicottero privato su Rio',
+      'Escursione privata alle isole paradisiache di Angra dos Reis con barca privata, autista e chef',
+      'Poligono di tiro',
+      'Concierge personale',
+    ],
+    cta: 'Prenota ora',
     badge: 'Più richiesto',
-  },
-  {
-    title: 'Premium',
-    period: 'Prezzo su richiesta',
-    items: ['Tutto ciò che include Plus', 'Soluzione completa', 'Assistenza dedicata'],
-    cta: 'Richiedi informazioni',
+    highlight: true,
   },
   {
     title: 'Personalizzato',
@@ -99,6 +133,14 @@ const packages = [
               >
                 {pkg.period}
               </p>
+
+              {pkg.description && (
+                <p
+                  class:list={['mt-4 text-sm italic leading-6', pkg.highlight ? 'text-[#f5f2e8]/80' : 'text-[#3a403a]']}
+                >
+                  {pkg.description}
+                </p>
+              )}
 
               <ul
                 class:list={[
