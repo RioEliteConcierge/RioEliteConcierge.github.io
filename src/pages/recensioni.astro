@@ -1,0 +1,128 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'Dicono di noi',
+  description: 'Scopri le recensioni dei viaggiatori che hanno vissuto Rio de Janeiro con Rio Elite Sborra.',
+};
+
+const whatsappNumber = '393465886627';
+
+const whatsappLink = (message: string) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+const reviews = [
+  {
+    name: 'Andrea A.',
+    role: 'Viaggio Essential',
+    rating: 4.5,
+    text: 'Esperienza davvero bella e ben organizzata. Rio è enorme e avere una guida locale fa una differenza enorme: abbiamo visto tanto in poco tempo senza sentirci di corsa. Avrei aggiunto qualche momento più libero per esplorare da soli.',
+  },
+  {
+    name: 'Carlo T.',
+    role: 'Viaggio Autentic',
+    rating: 5,
+    text: 'Il tour tra le comunità e il Maracanã è stato il punto più alto del viaggio. Ho visto un lato di Rio che da turista non avrei mai scoperto. Organizzazione seria, guida preparata e zero problemi logistici.',
+  },
+  {
+    name: 'Sara e Luca',
+    role: 'Viaggio Personalizzato',
+    rating: 4,
+    text: 'Itinerario su misura e tanta cura nei dettagli. Il concierge è stato disponibile prima e durante il viaggio. Qualche attività l’avremmo fatto più lentamente, ma nel complesso un’esperienza memorabile.',
+  },
+  {
+    name: 'Davide R.',
+    role: 'Viaggio Essential',
+    rating: 3.5,
+    text: 'Panorami spettacolari e tappe scelte bene: Cristo Redentore, Pan di Zucchero e Santa Teresa meritano tutti. Il ritmo è stato un po’ intenso per i nostri gusti, soprattutto nelle giornate con tanti spostamenti, ma la guida è stata molto professionale.',
+  },
+  {
+    name: 'Sabrina P.',
+    role: 'Viaggio Autentic',
+    rating: 4.5,
+    text: 'Il tour in moto e a piedi è stato un’esperienza intensa e autentica. Mi ha fatto vivere Rio da una prospettiva diversa, lontana dai soliti percorsi turistici. Consiglierei di portare scarpe comode e di non avere paura di uscire dalla comfort zone.',
+  },
+  {
+    name: 'Alessandro B.',
+    role: 'Viaggio EXPLOSÃO',
+    rating: 5,
+    text: 'Esperienza di alto livello dall’inizio alla fine. La barca privata ad Angra dos Reis, l’elicottero e il concierge hanno reso il viaggio davvero esclusivo. Costa, ma per un’occasione speciale vale ogni euro.',
+  },
+];
+---
+
+<PageLayout metadata={metadata}>
+  <main class="bg-[#e8e1d2] text-[#050505]">
+    <!-- Intro -->
+    <section class="bg-[#050505] px-4 pb-20 pt-32 text-[#f5f2e8] sm:px-6 sm:pb-28" aria-labelledby="recensioni-title">
+      <div class="mx-auto w-full max-w-295">
+        <p class="mb-5 text-[.68rem] font-bold uppercase tracking-[.2em] text-[#f0c95a]">
+          LE ESPERIENZE DI CHI HA VIAGGIATO CON NOI
+        </p>
+
+        <h1
+          id="recensioni-title"
+          class="max-w-4xl font-serif text-[clamp(3.2rem,10vw,7.5rem)] font-normal leading-[.9] tracking-[-.055em]"
+        >
+          Dicono<br /><em class="text-[#d9a62e]">di noi.</em>
+        </h1>
+
+        <p class="mt-7 max-w-md text-base leading-relaxed text-[#f5f2e8]/85 sm:text-xl">
+          Storie, impressioni e recensioni di chi ha scelto di vivere Rio de Janeiro con noi.
+        </p>
+      </div>
+    </section>
+
+    <!-- Recensioni -->
+    <section id="recensioni" class="bg-[#e8e1d2] px-4 py-20 sm:px-6 sm:py-32">
+      <div class="mx-auto grid w-full max-w-295 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          reviews.map((review, index) => (
+            <article class="relative flex flex-col border border-[#050505]/30 bg-[#ded2bd] p-7 text-[#050505] transition hover:-translate-y-1">
+              <span class="mb-6 block text-[.68rem] tracking-[.15em] text-[#9b6a21]">0{index + 1}</span>
+
+              <div class="flex gap-1 text-[#d9a62e]" aria-label={`Valutazione: ${review.rating} su 5`}>
+                {Array.from({ length: review.rating }).map(() => (
+                  <Icon name="tabler:star-filled" size={18} />
+                ))}
+              </div>
+
+              <blockquote class="mt-6 flex-1 font-serif text-xl leading-snug">“{review.text}”</blockquote>
+
+              <footer class="mt-8 border-t border-[#050505]/30 pt-6">
+                <p class="text-sm font-bold uppercase tracking-[.15em]">{review.name}</p>
+                <p class="mt-1 text-[.68rem] uppercase tracking-[.15em] text-[#9b6a21]">{review.role}</p>
+              </footer>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section
+      class="grid min-h-100 place-items-center bg-[#050505] px-4 py-24 text-center text-[#f5f2e8] sm:px-6"
+      aria-label="Contatti"
+    >
+      <div class="flex max-w-2xl flex-col items-center">
+        <p class="mb-5 text-[.68rem] font-bold uppercase tracking-[.2em] text-[#f0c95a]">
+          VUOI VIVERE LA TUA ESPERIENZA A RIO?
+        </p>
+
+        <h2 class="font-serif text-[clamp(3rem,7vw,5.8rem)] font-normal leading-[.92] tracking-tighter">
+          Raccontaci<br /><em class="text-[#d9a62e]">il tuo viaggio.</em>
+        </h2>
+
+        <a
+          class="mt-8 inline-flex items-center gap-2.5 rounded-full bg-[#d9a62e] px-5 py-3.5 text-sm font-bold text-[#050505] no-underline transition hover:-translate-y-0.5 hover:bg-[#f0c95a]"
+          href={whatsappLink('Ciao, vorrei ricevere maggiori informazioni sui vostri pacchetti per Rio de Janeiro.')}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Parliamone su WhatsApp
+          <Icon name="tabler:arrow-up-right" size={19} />
+        </a>
+      </div>
+    </section>
+  </main>
+</PageLayout>

@@ -14,6 +14,10 @@ export const headerData = {
       text: 'About',
       href: getPermalink('/about'),
     },
+    {
+      text: 'Recensioni',
+      href: '/recensioni',
+    },
   ],
   actions: [],
 };
@@ -27,6 +31,7 @@ export const footerData = {
         { text: 'Home', href: getPermalink('/') },
         { text: 'Pacchetti', href: getPermalink('/pacchetti') },
         { text: 'About', href: getPermalink('/about') },
+        { text: 'Recensioni', href: getPermalink('/recensioni') },
       ],
     },
     {
